@@ -1,0 +1,38 @@
+{%extends 'layout.html'%}
+
+{% block content %}
+<h2 align = "center">แสดงข้อมูลหอพัก</h2>
+<table class="table caption-top">
+    <caption>List of users</caption>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Firstname</th>
+        <th scope="col">Lastname</th>
+        <th scope="col">phone</th>
+        <th scope="col">lineId</th>
+        <th scope="col">dormName</th>
+        <th scope="col">price</th>
+        <th scope="col">location</th>
+        <th scope="col">description</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for post in dorms %}
+
+      <tr>
+        <th scope="row">{{post.id}}</th>
+        <td>{{post.name}}</td>
+        <td>{{post.phone}}</td>
+        <td>@{{post.lineId}}</td>
+        <td>@{{post.dormName}}</td>
+        <td>@{{post.price}}</td>
+        <td>@{{post.location}}</td>
+        <td>@{{post.desc}}</td>
+      </tr>
+      
+        {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}

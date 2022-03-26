@@ -1,0 +1,24 @@
+{%extends 'layout.html'%}
+
+{% block content %}
+
+    <h2>HomePage</h2>
+    <h1>ชื่อบทความ : {{name}}</h1>
+    <h1>ชื่อผู้จัดทำ : {{author}}</h1>
+
+    <ul>
+    <h2>ป้ายกำกับ</h2>
+    {% for tag in tags %}
+        <li>{{tag}}</li>
+
+    {% endfor %}
+    </ul>
+
+    <h2>ระดับความนิยม</h2>
+    {% if rating > 3 %}
+        <h3>ดีมาก</h3>
+    {% else %}
+        <h3>ไม่ได้รับความนิยม</h3>
+
+{% endif %}
+{% endblock %}
