@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Dorm
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,auth
+from django.contrib import messages
 
 # Create your views here.
 def hello(request):
@@ -19,10 +20,39 @@ def findRoomPage(request):
 def createForm(request):
     return render(request, 'form.html')
 
-def addBlogs(request):
-    name = request.POST['Name']
-    description = request.POST['Description']
-    return render(request, 'result.html',{'Name':name,'Description':description})
+def loginForm(request):
+    return render(request, 'login.html')
+
+def addUser(request):
+    username = request.POST['username']
+    firstname = request.POST['firstname']
+    lastname = request.POST['lastname']
+    email = request.POST['email']
+    password = request.POST['password']
+    repassword = request.POST['repassword']
+    
+    if password == repassword :
+        if User.objects.filter(username = username).exists():
+            messages.info(request, "This username already been used")
+            return redirect('/createForm')
+        elif User.objects.filter(email = email).exists():
+            messages.info(request, "This email already been used")
+            return redirect('/createForm')
+        else : 
+            user = User.objects.create_user(
+            username = username,
+            password = password,
+            email = email,
+            first_name = firstname,
+            last_name = lastname
+            )
+            user.save()
+            return redirect('/')
+    else :
+        messages.info(request, "Password dosen't match")
+        return redirect('/createForm')
+    
+    
 
 def tableView(request):
     return render(request, 'table.html')
@@ -35,6 +65,7 @@ def queryDB(request):
 def loginPage(request):
     return render(request, 'login.html')
 
+'''
 def addLogin(request):
     username = request.POST['username']
     firstname = request.POST['firstname']
@@ -52,3 +83,24 @@ def addLogin(request):
     )
     user.save()
     return render(request, 'result.html')
+    '''
+    
+def login(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    #เช็คว่าชื่อกับรหัสตรงกับที่บันทึกไว้หรือป่าว
+    user = auth.authenticate(username = username , password = password)
+    
+    if user is not None : 
+        auth.login(request, user)
+        return redirect('/')
+    else :
+        messages.info(request, "Username or Password are invalid")
+        return redirect('/loginForm')
+    
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
+
+def postCard(request):
+    return render(request, 'postCard.html')

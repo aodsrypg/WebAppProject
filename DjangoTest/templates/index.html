@@ -2,23 +2,70 @@
 
 {% block content %}
 
-    <h2>HomePage</h2>
-    <h1>ชื่อบทความ : {{name}}</h1>
-    <h1>ชื่อผู้จัดทำ : {{author}}</h1>
+<div style="display:flex; flex-direction: column; justify-content:center; align-items: center; width: 100%;">
+    <img src="https://png.pngtree.com/thumb_back/fh260/background/20210115/pngtree-blue-modern-city-skyline-business-banner-background-image_519692.jpg "
+        width="1920" height="500">
+</div>
 
-    <ul>
-    <h2>ป้ายกำกับ</h2>
-    {% for tag in tags %}
-        <li>{{tag}}</li>
+    <div class='container mt-5' style="justify-content:space-between">
 
-    {% endfor %}
-    </ul>
+        <div class="row row-cols-1 row-cols-md-3 ms-auto me-auto">
 
-    <h2>ระดับความนิยม</h2>
-    {% if rating > 3 %}
-        <h3>ดีมาก</h3>
-    {% else %}
-        <h3>ไม่ได้รับความนิยม</h3>
+            <div class="card" >
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">An item</li>
+                  <li class="list-group-item">A second item</li>
+                  <li class="list-group-item">A third item</li>
+                </ul>
+                <div class="card-body">
+                  <a href="#" class="card-link">Card link</a>
+                  <a href="#" class="card-link">Another link</a>
+                </div>
+              </div>
 
-{% endif %}
+              <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">An item</li>
+                  <li class="list-group-item">A second item</li>
+                  <li class="list-group-item">A third item</li>
+                </ul>
+                <div class="card-body">
+                  <a href="#" class="card-link">Card link</a>
+                  <a href="#" class="card-link">Another link</a>
+                </div>
+              </div>
+
+              <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">An item</li>
+                  <li class="list-group-item">A second item</li>
+                  <li class="list-group-item">A third item</li>
+                </ul>
+                <div class="card-body">
+                  <a href="#" class="card-link">Card link</a>
+                  <a href="#" class="card-link">Another link</a>
+                </div>
+              </div>
+
+        </div>
+
+    </div>
+
+
+
 {% endblock %}

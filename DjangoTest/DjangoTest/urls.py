@@ -24,7 +24,10 @@ urlpatterns = [
     path('Home/',views.hello),
     path('findRoomPage',views.findRoomPage),
     path('createForm',views.createForm),
-    path('addForm',views.addBlogs),
+    path('addForm',views.addUser),
     path('tableView', views.queryDB),
-    path('addLogin', views.addLogin)
+    path('loginForm', views.loginForm),
+    path('login', views.login),
+    path('logout', views.logout),
+    path('postCard', views.postCard)
 ]

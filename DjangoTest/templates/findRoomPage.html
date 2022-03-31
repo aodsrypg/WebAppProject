@@ -2,46 +2,48 @@
 
 {% block content %}
 
-<h2 align = "center"> แบบฟอร์มลงทะเบียนห้องพัก </h2>
-<form action="addForm" method="post">
-    {% csrf_token %}
-    <div class="form-group">
-        <label for="">ชื่อผู้ลงทะเบียน</label>
-        <input type="text" class="form-control" name="Name">
-    </div>
+<h2 align="center"> แบบฟอร์มลงทะเบียนหารูมเมท </h2>
+<div class='container'>
+    <form action="addForm" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="">ชื่อผู้ลงทะเบียน</label>
+            <input type="text" class="form-control" name="Name">
+        </div>
 
-    <div class="form-group">
-        <label for="">เบอร์โทร</label>
-        <input type="text" class="form-control mb-2" name="Phone">
-    </div>
+        <div class="form-group">
+            <label for="">เบอร์โทร</label>
+            <input type="text" class="form-control mb-2" name="Phone">
+        </div>
 
-    <div class="form-group">
-        <label for="">LineID</label>
-        <input type="text" class="form-control mb-2" name="LineID">
-    </div>
+        <div class="form-group">
+            <label for="">LineID</label>
+            <input type="text" class="form-control mb-2" name="LineID">
+        </div>
 
-    <div class="form-group">
-        <label for="">ชื่อหอพัก</label>
-        <input type="text" class="form-control mb-2" name="DormName">
-    </div>
+        <div class="form-group">
+            <label for="">ชื่อหอพัก</label>
+            <input type="text" class="form-control mb-2" name="DormName">
+        </div>
 
-    <div class="form-group">
-        <label for="">ราคาห้อง</label>
-        <input type="text" class="form-control mb-2" name="DormPrice">
-    </div>
+        <div class="form-group">
+            <label for="">ราคาห้อง</label>
+            <input type="text" class="form-control mb-2" name="DormPrice">
+        </div>
 
-    <div class="form-group">
-        <label for="">สถานที่ของหอพัก</label>
-        <input type="text" class="form-control mb-2" name="DormLoc">
-    </div>
-    
-    <div class="form-group">
-        <label for="">รายละเอียด</label>
-        <input type="text" class="form-control mb-2" name="Description">
-    </div>
+        <div class="form-group">
+            <label for="">สถานที่ของหอพัก</label>
+            <input type="text" class="form-control mb-2" name="DormLoc">
+        </div>
 
-    <input type="submit" value="Submit" class="btn btn-primary">
+        <div class="form-group">
+            <label for="">รายละเอียด</label>
+            <input type="text" class="form-control mb-2" name="Description">
+        </div>
 
-</form>
+        <input type="submit" value="Submit" class="btn btn-primary">
+
+    </form>
+</div>
 
 {% endblock %}
