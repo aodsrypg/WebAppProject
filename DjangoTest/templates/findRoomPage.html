@@ -4,54 +4,106 @@
 
 <h2 align="center"> แบบฟอร์มลงทะเบียนหารูมเมท </h2>
 <div class='container'>
-    <form action="addForm" method="post">
+    <form action="addPost" method="post">
         {% csrf_token %}
 
         <div class="form-group">
             <label for="">ชื่อหอพัก</label>
-            <input type="text" class="form-control mb-2" name="DormName">
+            <input type="text" class="form-control mb-2" name="dormName">
         </div>
 
         <div class="form-group">
             <label for="">ต้องการรูมเมทกี่คน</label>
-            <input type="number" class="form-control mb-2" name="">
+            <input type="number" class="form-control mb-2" name="mateNumber">
         </div>
 
         <div class="form-group">
             <label for="">ราคาห้อง</label>
-            <input type="text" class="form-control mb-2" name="DormPrice">
+            <input type="number" class="form-control mb-2" name="rent" placeholder="ใส่เป็นจำนวนเลขต่อเดือน"
+                aria-label=".form-control-sm example">
         </div>
 
         <div class="form-group">
             <label for="">สถานที่ของหอพัก</label>
-            <input type="text" class="form-control mb-2" name="">
+            <input type="text" class="form-control mb-2" name="location">
         </div>
 
         <div class="form-group">
             <label for="">รายละเอียดของหอพัก</label>
-            <input type="text" class="form-control mb-2" name="">
+            <input type="text" class="form-control mb-2" name="dormDescription">
         </div>
 
         <div class="form-group">
             <label for="">นิสัยรูมเมทที่อยากได้</label>
-            <input type="text" class="form-control mb-2" name="">
+            <input type="text" class="form-control mb-2" name="mateHabit">
         </div>
 
         <div class="form-group">
             <label for="">สิ่งที่อยากบอกกับรูมเมท</label>
+            <input type="text" class="form-control mb-2" name="comment">
+        </div>
+
+        <!---
+        <div class="form-group">
+            <label for="">ห้องนอนแยกหรือไม่</label>
             <input type="text" class="form-control mb-2" name="">
         </div>
+        --->
+
+        <div class="col-md mb-4 mt-2">
+            <label for="">ห้องนอนแยกหรือไม่</label>
+            <div class="form-floating">
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="separate">
+                    <option selected>-</option>
+                    <option value="True">ใช่</option>
+                    <option value="False">ไม่</option>
+                </select>
+                <label for="floatingSelectGrid">Open this select menu</label>
+            </div>
+        </div>
+
+        <div class="col-md mb-4 mt-2">
+            <label for="">ค่าน้ำ/ค่าไฟ(คิดตามมิเตอร์/จ่ายเหมา)</label>
+            <div class="form-floating">
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example" name = "bill">
+                    <option selected>-</option>
+                    <option value="Meter">คิดตามมิเตอร์</option>
+                    <option value="Lumpsum">จ่ายเหมา</option>
+                </select>
+                <label for="floatingSelectGrid">Open this select menu</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="">หารคนละเท่าไหร่</label>
+            <input type="text" class="form-control mb-2" name="rentShare">
+        </div>
+
+        <!--- 
+        <div class="col-md mb-4 mt-2">
+            <label for="">ราคาห้องพัก</label>
+            <div class="form-floating">
+                <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+                    <option selected>-</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                <label for="floatingSelectGrid">ราคาห้องพัก</label>
+            </div>
+        </div>
+        --->
 
         <div class="mb-4 mt-4">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <input class="form-check-input" type="checkbox" value="มีห้องอยู่แล้ว" id="flexCheckChecked"  name="haveRoom" >
                 <label class="form-check-label" for="flexCheckChecked">
                     มีห้องอยู่แล้ว
                 </label>
             </div>
         </div>
 
-        <input type="submit" value="Submit" class="btn btn-primary">
+        <input type="submit" value="Submit" class="btn btn-primary mb-2">
 
     </form>
 </div>

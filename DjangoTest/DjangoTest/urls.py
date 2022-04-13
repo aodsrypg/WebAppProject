@@ -29,5 +29,6 @@ urlpatterns = [
     path('loginForm', views.loginForm),
     path('login', views.login),
     path('logout', views.logout),
-    path('postCard', views.postCard)
+    path('postCard', views.postCard),
+    path('addPost', views.addPost)
 ]
