@@ -12,9 +12,37 @@
 </header>
 
 
+
+<div class= 'container mt-5'>
+    <div class="row">
+    {% for postfind in posts %}
+    
+
+    <div class="col-sm-6">
+        
+        <div class="card text-black bg-light mb-3">
+            <div class="card-header">User001 (เพศชาย)</div>
+            <div class="card-body">
+                <h5 class="card-title">{{postfind.dormName}} {{postfind.haveRoom}}</h5>
+                <p class="card-text">{{postfind.comment}}</p>
+                <a href="#" class="btn btn-primary">อ่านรายละเอียด</a>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+    {% endfor %}
+    </div>
+</div>
+
+
+<!--
 <div class = 'container mt-5'>
 
 <body>
+
 
 <div class="row">
     <div class="col-sm-6">
@@ -100,6 +128,7 @@
 </div>
 </body>
 </div>
+-->
 
 
 {% endblock %}

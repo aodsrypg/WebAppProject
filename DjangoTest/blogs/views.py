@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Dorm
+from blogs.models import Dorm
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 #from insertrecord.models import insertemprecord
@@ -104,44 +104,47 @@ def logout(request):
     return redirect('/')
 
 def postCard(request):
-    return render(request, 'postCard.html')
+    posts=None
+    posts=Dorm.objects.all()
+    return render(request, 'postCard.html',{'posts':posts})
 
-def addPost(request):
+# def addPost(request):
    
-    ISOwner = 'haveRoom' in request.POST.keys()
+#     ISOwner = 'haveRoom' in request.POST.keys()
     
-    dormName = request.POST['dormName']
-    mateNumber = request.POST['mateNumber']
-    rent = request.POST['rent']
-    location = request.POST['location']
-    dormDescription = request.POST['dormDescription']
-    mateHabit = request.POST['mateHabit']
-    comment =request.POST['comment']
-    separateBed = request.POST['separate']
-    utilityBillType = request.POST['bill']
-    rentShare = request.POST['rentShare']
-    haveRoom = request.POST['haveRoom']
+#     dormName = request.POST['dormName']
+#     mateNumber = request.POST['mateNumber']
+#     rent = request.POST['rent']
+#     location = request.POST['location']
+#     dormDescription = request.POST['dormDescription']
+#     mateHabit = request.POST['mateHabit']
+#     comment =request.POST['comment']
+#     separateBed = request.POST['separate']
+#     utilityBillType = request.POST['bill']
+#     rentShare = request.POST['rentShare']
+#     haveRoom = request.POST['haveRoom']
     
-    # print('Owliang')
-    # print(dormName)
-    # print(request.POST)
+#     # print('Owliang')
+#     # print(dormName)
+#     # print(request.POST)
     
-    #ISOwner = 'haveRoom' in request.POST.keys()
+#     #ISOwner = 'haveRoom' in request.POST.keys()
     
-    #print(ISOwner)
+#     #print(ISOwner)
     
-    dorm = Dorm.objects.create(
-    dormName = dormName,
-    mateNumber = mateNumber,
-    rent = rent,
-    location = location,
-    dormDescription = dormDescription,
-    mateHabit = mateHabit,
-    comment = comment,
-    separateBed = separate,
-    utilityBillType = bill,
-    rentShare = rentShare,
-    haveRoom = haveRoom
-    )
-    dorm.save()
-    return redirect('/')
+#     dorm = Dorm.objects.create(
+#     dormName = dormName,
+#     mateNumber = mateNumber,
+#     rent = rent,
+#     location = location,
+#     dormDescription = dormDescription,
+#     mateHabit = mateHabit,
+#     comment = comment,
+#     separateBed = separate,
+#     utilityBillType = bill,
+#     rentShare = rentShare,
+#     haveRoom = haveRoom
+#     )
+#     dorm.save()
+#     return redirect('/')
+
