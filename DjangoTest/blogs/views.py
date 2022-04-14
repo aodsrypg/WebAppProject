@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from blogs.models import Dorm
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
+from django.core.paginator import Paginator,EmptyPage,InvalidPage
 #from insertrecord.models import insertemprecord
 
 # Create your views here.
@@ -106,7 +107,28 @@ def logout(request):
 def postCard(request):
     posts=None
     posts=Dorm.objects.all()
-    return render(request, 'postCard.html',{'posts':posts})
+
+    paginator=Paginator(posts,4)
+    try:
+        page=int(request.GET.get('page','1'))
+    except:
+        page=1
+
+    try:
+        postperPage=paginator.page(page)
+    except (EmptyPage,InvalidPage):
+        postperPage=paginator.page(paginator.num_pages)
+
+
+    return render(request, 'postCard.html',{'posts':postperPage})
+
+
+def postIng(request,product_dormName):
+    
+    information=None
+    information=Dorm.objects.get(dormName=product_dormName)
+
+    return render(request,'postDetail.html',{'information':information})
 
 # def addPost(request):
    
