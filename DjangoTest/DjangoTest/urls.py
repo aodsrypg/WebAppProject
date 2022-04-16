@@ -30,6 +30,8 @@ urlpatterns = [
     path('login', views.login),
     path('logout', views.logout),
     path('postCard', views.postCard),
-    path('postDetail/<slug:product_dormName>', views.postIng,name='productDetail')
-    #path('addPost', views.addPost)
+    path('postDetail/<slug:Dorm_dormName>', views.postIng),
+    path('addPost', views.addPost),
+    path('search/',views.search,name='search'),
+    path('result',views.result)
 ]

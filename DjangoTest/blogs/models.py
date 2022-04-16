@@ -4,7 +4,8 @@ from django.db import models
 # Create your models here.
 class Dorm(models.Model) :
     
-    dormName = models.CharField(max_length = 200)
+    Username = models.CharField(max_length = 200)
+    dormName = models.SlugField(max_length = 255,unique=True)
     mateNumber = models.IntegerField()
     rent = models.CharField(max_length = 200)
     location = models.CharField(max_length = 200)
@@ -30,3 +31,4 @@ class Dorm(models.Model) :
     # price = models.TextField()
     # location = models.TextField()
     # desc = models.TextField()
+    

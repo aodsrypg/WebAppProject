@@ -32,6 +32,12 @@ def addUser(request):
     email = request.POST['email']
     password = request.POST['password']
     repassword = request.POST['repassword']
+    # sex = request.POST['sex']
+    # phone = request.POST['phone']
+    # line_ID = request.POST['line_ID']
+    # habit = request.POST['habit']
+    
+    print(request.POST)
     
     if password == repassword :
         if User.objects.filter(username = username).exists():
@@ -46,7 +52,11 @@ def addUser(request):
             password = password,
             email = email,
             first_name = firstname,
-            last_name = lastname
+            last_name = lastname,
+            # sex = sex,
+            # phone = phone,
+            # line_ID = line_ID,
+            # habit = habit
             )
             user.save()
             return redirect('/')
@@ -106,7 +116,9 @@ def logout(request):
 
 def postCard(request):
     posts=None
+    # users=None
     posts=Dorm.objects.all()
+    # users=User.objects.all()
 
     paginator=Paginator(posts,4)
     try:
@@ -123,17 +135,25 @@ def postCard(request):
     return render(request, 'postCard.html',{'posts':postperPage})
 
 
-def postIng(request,product_dormName):
+def postIng(request,Dorm_dormName):
     
-    information=None
-    information=Dorm.objects.get(dormName=product_dormName)
+    try:
+        name = Dorm.objects.get(dormName=Dorm_dormName)
+    except Exception as e :
+        raise e
+    return render(request, 'postDetail.html',{'dormName':name})
+    
+    # information=None
+    # information=Dorm.objects.get(dormName=Dorm_dormName)
 
-    return render(request,'postDetail.html',{'information':information})
+    # return render(request,'postDetail.html',{'information':information})
 
-# def addPost(request):
+def addPost(request):
+    
+    # users=User.objects.all()
    
     #ISOwner = 'haveRoom' in request.POST.keys()
-    
+    username = request.POST['Username']
     dormName = request.POST['dormName']
     mateNumber = request.POST['mateNumber']
     rent = request.POST['rent']
@@ -152,15 +172,16 @@ def postIng(request,product_dormName):
         
     #haveRoom = request.POST['haveRoom']
     
-#     # print('Owliang')
-#     # print(dormName)
-#     # print(request.POST)
+    # print('Owliang')
+    # print(dormName)
+    print(request.POST)
     
-#     #ISOwner = 'haveRoom' in request.POST.keys()
+    #ISOwner = 'haveRoom' in request.POST.keys()
     
     # print(ISOwner)
     
     dorm = Dorm(
+    Username=username,
     dormName = dormName,
     mateNumber = mateNumber,
     rent = rent,
@@ -175,9 +196,20 @@ def postIng(request,product_dormName):
     )
     dorm.save()
     
-    return render(request, 'postCard.html')
+    #return render(request, 'postCard.html')
     
-    #return redirect('/')
+    return redirect('/')
     
     # return render(request, 'result.html',{'dormName':dormName, 'mateNumber':mateNumber, 'rent':rent, 'location':location, 'dormDescription':dormDescription,
     #                                       'mateHabit':mateHabit, 'comment':comment, 'separate':separateBed, 'bill':utilityBillType, 'rentShare':rentShare, 'haveRoom':haveRoom})
+
+def search(request):
+    posts=Dorm.objects.filter(dormName__contains=request.GET['title'])
+    return render(request,'postCard.html',{'posts':posts})
+
+def result(request):
+    
+    
+    
+    return render(request, 'result.html',{'dormName':dormName, 'mateNumber':mateNumber, 'rent':rent, 'location':location, 'dormDescription':dormDescription,
+                                          'mateHabit':mateHabit, 'comment':comment, 'separate':separateBed, 'bill':utilityBillType, 'rentShare':rentShare, 'haveRoom':haveRoom})
