@@ -1,3 +1,4 @@
+from audioop import reverse
 from django.db import models
 
 # Create your models here.
@@ -14,6 +15,13 @@ class Dorm(models.Model) :
     utilityBillType = models.CharField(max_length = 200)
     rentShare = models.CharField(max_length = 200)
     haveRoom = models.CharField(max_length = 200)
+
+    def __str__(self):
+        return self.dormName
+
+ 
+    def get_url(self):
+        return reverse('productDetail',args=[self.dormName])
     
     # name = models.CharField(max_length = 200)
     # phone = models.CharField(max_length = 10)

@@ -30,5 +30,6 @@ urlpatterns = [
     path('login', views.login),
     path('logout', views.logout),
     path('postCard', views.postCard),
-    path('addPost', views.addPost)
+    path('postDetail/<slug:product_dormName>', views.postIng,name='productDetail')
+    #path('addPost', views.addPost)
 ]
