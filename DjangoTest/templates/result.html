@@ -1,9 +1,23 @@
 {%extends 'layout.html'%}
 
 {% block content %}
-    <h2>ผลลัพท์หารูมเมท</h2>
+<div class='container form-control-sm mb-2'>
 
-    <h3>{{Name}}</h3>
-    <p>{{Description}}</p>
-    
+
+    <h1>ผลลัพท์ลงทะเบียนหารูมเมท</h1>
+
+    <h3>ชื่อหอพัก : {{dormName}}</h3>
+    <p>ต้องการรูมเมทกี่คน : {{mateNumber}}</p>
+    <p>ราคาห้อง : {{rent}}</p>
+    <p>สถานที่ของหอพัก : {{location}}</p>
+    <p>รายละเอียดของหอพัก : {{dormDescription}}</p>
+    <p>นิสัยรูมเมทที่อยากได้ : {{mateHabit}}</p>
+    <p>สิ่งที่อยากบอกกับรูมเมท : {{comment}}</p>
+    <p>ห้องนอนแยกหรือไม่ : {{separateBed}}</p>
+    <p>ค่าน้ำ/ค่าไฟ(คิดตามมิเตอร์/จ่ายเหมา) : {{utilityBillType}}</p>
+    <p>หารคนละเท่าไหร่ : {{rentShare}}</p>
+    <p>มีห้องอยู่แล้ว : {{haveRoom}}</p>
+
+</div>
+
 {% endblock %}

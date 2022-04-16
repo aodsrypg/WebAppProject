@@ -108,7 +108,7 @@ def postCard(request):
 
 def addPost(request):
    
-    ISOwner = 'haveRoom' in request.POST.keys()
+    #ISOwner = 'haveRoom' in request.POST.keys()
     
     dormName = request.POST['dormName']
     mateNumber = request.POST['mateNumber']
@@ -117,10 +117,16 @@ def addPost(request):
     dormDescription = request.POST['dormDescription']
     mateHabit = request.POST['mateHabit']
     comment =request.POST['comment']
-    separateBed = request.POST['separate']
-    utilityBillType = request.POST['bill']
+    separateBed = request.POST['separateBed']
+    utilityBillType = request.POST['utilityBillType']
     rentShare = request.POST['rentShare']
-    haveRoom = request.POST['haveRoom']
+    
+    if 'haveRoom' in request.POST:
+        haveRoom = request.POST['haveRoom']
+    else:
+        haveRoom = "ยังไม่มีห้อง"
+        
+    #haveRoom = request.POST['haveRoom']
     
     # print('Owliang')
     # print(dormName)
@@ -128,9 +134,9 @@ def addPost(request):
     
     #ISOwner = 'haveRoom' in request.POST.keys()
     
-    #print(ISOwner)
+    # print(ISOwner)
     
-    dorm = Dorm.objects.create(
+    dorm = Dorm(
     dormName = dormName,
     mateNumber = mateNumber,
     rent = rent,
@@ -138,10 +144,16 @@ def addPost(request):
     dormDescription = dormDescription,
     mateHabit = mateHabit,
     comment = comment,
-    separateBed = separate,
-    utilityBillType = bill,
+    separateBed = separateBed,
+    utilityBillType = utilityBillType,
     rentShare = rentShare,
     haveRoom = haveRoom
     )
     dorm.save()
-    return redirect('/')
+    
+    return render(request, 'postCard.html')
+    
+    #return redirect('/')
+    
+    # return render(request, 'result.html',{'dormName':dormName, 'mateNumber':mateNumber, 'rent':rent, 'location':location, 'dormDescription':dormDescription,
+    #                                       'mateHabit':mateHabit, 'comment':comment, 'separate':separateBed, 'bill':utilityBillType, 'rentShare':rentShare, 'haveRoom':haveRoom})
