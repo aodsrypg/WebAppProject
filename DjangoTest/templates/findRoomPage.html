@@ -12,6 +12,17 @@
             <input type="text" class="form-control mb-2" name="Username">
         </div>
 
+        <div class="col-md mb-4 mt-2">
+            <label for="">เพศ</label>
+            <div>
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example" name = "sex">
+                    <option selected>-</option>
+                    <option value="เพศชาย">เพศชาย</option>
+                    <option value="เพศหญิง">เพศหญิง</option>
+                </select>
+            </div>
+        </div>
+
         <div class="form-group">
             <label for="">ชื่อหอพัก</label>
             <input type="text" class="form-control mb-2" name="dormName">
@@ -57,31 +68,34 @@
 
         <div class="col-md mb-4 mt-2">
             <label for="">ห้องนอนแยกหรือไม่</label>
-            <div class="form-floating">
+            <div>
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="separateBed">
                     <option selected>-</option>
-                    <option value="True">ใช่</option>
-                    <option value="False">ไม่</option>
+                    <option value="ใช่">ใช่</option>
+                    <option value="ไม่">ไม่</option>
                 </select>
-                <label for="floatingSelectGrid">Open this select menu</label>
             </div>
         </div>
 
         <div class="col-md mb-4 mt-2">
             <label for="">ค่าน้ำ/ค่าไฟ(คิดตามมิเตอร์/จ่ายเหมา)</label>
-            <div class="form-floating">
+            <div>
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example" name = "utilityBillType">
                     <option selected>-</option>
-                    <option value="Meter">คิดตามมิเตอร์</option>
-                    <option value="Lumpsum">จ่ายเหมา</option>
+                    <option value="คิดตามมิเตอร์">คิดตามมิเตอร์</option>
+                    <option value="จ่ายเหมา">จ่ายเหมา</option>
                 </select>
-                <label for="floatingSelectGrid">Open this select menu</label>
             </div>
         </div>
 
         <div class="form-group">
             <label for="">หารคนละเท่าไหร่</label>
             <input type="text" class="form-control mb-2" name="rentShare">
+        </div>
+
+        <div class="form-group">
+            <label for="">Facebook/Line-ID/ช่องทางการติดต่อ</label>
+            <input type="text" class="form-control mb-2" name="contact">
         </div>
 
         <!--- 

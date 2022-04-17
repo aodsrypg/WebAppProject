@@ -1,23 +1,33 @@
 {%extends 'layout.html'%}
 
 {% block content %}
-<div class='container form-control-sm mb-2'>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <div class="card mt-4">
+                <div class="card-body">
 
+                    <h1>ผลลัพท์ลงทะเบียนหารูมเมท</h1>
 
-    <h1>ผลลัพท์ลงทะเบียนหารูมเมท</h1>
-
-    <h3>ชื่อหอพัก : {{dormName}}</h3>
-    <p>ต้องการรูมเมทกี่คน : {{mateNumber}}</p>
-    <p>ราคาห้อง : {{rent}}</p>
-    <p>สถานที่ของหอพัก : {{location}}</p>
-    <p>รายละเอียดของหอพัก : {{dormDescription}}</p>
-    <p>นิสัยรูมเมทที่อยากได้ : {{mateHabit}}</p>
-    <p>สิ่งที่อยากบอกกับรูมเมท : {{comment}}</p>
-    <p>ห้องนอนแยกหรือไม่ : {{separateBed}}</p>
-    <p>ค่าน้ำ/ค่าไฟ(คิดตามมิเตอร์/จ่ายเหมา) : {{utilityBillType}}</p>
-    <p>หารคนละเท่าไหร่ : {{rentShare}}</p>
-    <p>มีห้องอยู่แล้ว : {{haveRoom}}</p>
-
+                    <!-- <h3>ID : {{dorms.id}}</h3> -->
+                    <h3>ชื่อหอพัก : {{dorms.dormName}}</h3>
+                    <p>เพศ : {{dorms.sex}}</p>
+                    <p>ต้องการรูมเมทกี่คน : {{dorms.mateNumber}}</p>
+                    <p>ราคาห้อง : {{dorms.rent}}</p>
+                    <p>สถานที่ของหอพัก : {{dorms.location}}</p>
+                    <p>รายละเอียดของหอพัก : {{dorms.dormDescription}}</p>
+                    <p>นิสัยรูมเมทที่อยากได้ : {{dorms.mateHabit}}</p>
+                    <p>สิ่งที่อยากบอกกับรูมเมท : {{dorms.comment}}</p>
+                    <p>ห้องนอนแยกหรือไม่ : {{dorms.separateBed}}</p>
+                    <p>ค่าน้ำ/ค่าไฟ(คิดตามมิเตอร์/จ่ายเหมา) : {{dorms.utilityBillType}}</p>
+                    <p>หารคนละเท่าไหร่ : {{dorms.rentShare}}</p>
+                    <p>Facebook/Line-ID/ช่องทางการติดต่อ : {{dorms.contact}}</p>
+                    <p>มีห้องอยู่แล้ว : {{dorms.haveRoom}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

@@ -147,13 +147,29 @@ def postIng(request,Dorm_dormName):
     # information=Dorm.objects.get(dormName=Dorm_dormName)
 
     # return render(request,'postDetail.html',{'information':information})
-
+    
+def resultdetaIl(request) :
+    try:
+        print('owliang')
+        print(id)
+        id = Dorm.objects.get(id=id)
+        
+    except Exception as e :
+        raise e
+    return render(request, 'result.html',{'id':id})
+    
+    
+    
+    
+    
+    
 def addPost(request):
     
     # users=User.objects.all()
    
     #ISOwner = 'haveRoom' in request.POST.keys()
     username = request.POST['Username']
+    sex = request.POST['sex']
     dormName = request.POST['dormName']
     mateNumber = request.POST['mateNumber']
     rent = request.POST['rent']
@@ -163,6 +179,7 @@ def addPost(request):
     comment =request.POST['comment']
     separateBed = request.POST['separateBed']
     utilityBillType = request.POST['utilityBillType']
+    contact = request.POST['contact']
     rentShare = request.POST['rentShare']
     
     if 'haveRoom' in request.POST:
@@ -174,14 +191,15 @@ def addPost(request):
     
     # print('Owliang')
     # print(dormName)
-    print(request.POST)
-    
+    #print(request.POST)
+
     #ISOwner = 'haveRoom' in request.POST.keys()
     
     # print(ISOwner)
-    
+   
     dorm = Dorm(
     Username=username,
+    sex = sex,
     dormName = dormName,
     mateNumber = mateNumber,
     rent = rent,
@@ -192,6 +210,7 @@ def addPost(request):
     separateBed = separateBed,
     utilityBillType = utilityBillType,
     rentShare = rentShare,
+    contact = contact,
     haveRoom = haveRoom
     )
     dorm.save()
@@ -205,11 +224,15 @@ def addPost(request):
 
 def search(request):
     posts=Dorm.objects.filter(dormName__contains=request.GET['title'])
+    posts=Dorm.objects.filter(location__contains=request.GET['title'])
     return render(request,'postCard.html',{'posts':posts})
 
-def result(request):
-    
-    
-    
-    return render(request, 'result.html',{'dormName':dormName, 'mateNumber':mateNumber, 'rent':rent, 'location':location, 'dormDescription':dormDescription,
-                                          'mateHabit':mateHabit, 'comment':comment, 'separate':separateBed, 'bill':utilityBillType, 'rentShare':rentShare, 'haveRoom':haveRoom})
+def result(request): #  ?id=2
+    posts=Dorm.objects.all()
+    dorm = None
+    for post in posts:
+        if post.id == int(request.GET['id']):
+            dorm = post
+            break
+    # print(request.GET['id'])
+    return render(request,'result.html',{'id':request.GET['id'], 'dorms' : dorm})
