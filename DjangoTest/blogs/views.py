@@ -59,6 +59,7 @@ def addUser(request):
             # habit = habit
             )
             user.save()
+            messages.info(request, "Sign up Successfully")
             return redirect('/')
     else :
         messages.info(request, "Password dosen't match")
@@ -105,6 +106,7 @@ def login(request):
     
     if user is not None : 
         auth.login(request, user)
+        messages.info(request, "Login Successfully")
         return redirect('/')
     else :
         messages.info(request, "Username or Password are invalid")
@@ -214,17 +216,18 @@ def addPost(request):
     haveRoom = haveRoom
     )
     dorm.save()
-    
+    messages.info(request, "แบบฟอร์มได้รับการบันทึกแล้ว")
     #return render(request, 'postCard.html')
     
-    return redirect('/')
+    return redirect('/postCard')
     
     # return render(request, 'result.html',{'dormName':dormName, 'mateNumber':mateNumber, 'rent':rent, 'location':location, 'dormDescription':dormDescription,
     #                                       'mateHabit':mateHabit, 'comment':comment, 'separate':separateBed, 'bill':utilityBillType, 'rentShare':rentShare, 'haveRoom':haveRoom})
 
 def search(request):
-    posts=Dorm.objects.filter(dormName__contains=request.GET['title'])
-    posts=Dorm.objects.filter(location__contains=request.GET['title'])
+    posts = Dorm.objects.filter(location__contains=request.GET['title'])
+    posts = Dorm.objects.filter(dormName__contains=request.GET['title'])
+    
     return render(request,'postCard.html',{'posts':posts})
 
 def result(request): #  ?id=2

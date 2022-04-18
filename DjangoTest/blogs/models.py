@@ -18,13 +18,16 @@ class Dorm(models.Model) :
     rentShare = models.CharField(max_length = 200)
     contact = models.CharField(max_length = 200)
     haveRoom = models.CharField(max_length = 200)
-    created=models.DateTimeField(auto_now_add=True)
+    # testtime = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.dormName
  
     def get_url(self):
         return reverse('productDetail',args=[self.dormName])
+    
+    # class Meta :
+    #     ordering=('-testtime',)
     
     # name = models.CharField(max_length = 200)
     # phone = models.CharField(max_length = 10)

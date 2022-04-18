@@ -11,6 +11,14 @@
     </div>
 </header>
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% for message in messages %}
+
+<script>
+  swal('{{ message }}')
+</script>
+{% endfor %}
 
 
 <div class= 'container mt-5'>
